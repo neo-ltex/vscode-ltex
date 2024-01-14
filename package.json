@@ -1,5 +1,5 @@
 {
-  "name": "ltex",
+  "name": "vscode-ltex",
   "displayName": "LTeX – LanguageTool grammar/spell checking (neo)",
   "version": "13.1.0",
   "description": "Grammar/spell checker using LanguageTool with support for LaTeX, Markdown, and others",
