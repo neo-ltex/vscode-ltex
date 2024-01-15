@@ -17,15 +17,16 @@ jobs:
 
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v4"
 
       - name: "Set up Node.js"
-        uses: "actions/setup-node@v1"
+        uses: "actions/setup-node@v3"
         with:
-          node-version: "16.11.0"
+          node-version: "16"
+          cache: pnpm
 
       - name: "Install Node.js Dependencies"
-        run: "npm install && npm install -g vsce@1 ovsx@0.2.1"
+        run: "pnpm install"
 
       - name: "Set up Python"
         uses: "actions/setup-python@v2"
@@ -69,12 +70,13 @@ jobs:
         run: "git tag -f nightly && git push -f origin nightly"
 
       - name: "Create GitHub Release"
-        uses: "softprops/action-gh-release@v0.1.8"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        uses: "softprops/action-gh-release@v1"
         with:
           tag_name: "nightly"
           name: "${{ env.VSCODE_LTEX_VERSION }}"
           prerelease: true
           body: "This is a nightly build. Use at your own risk."
-          files: "ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix\nltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix\nltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
+          files: |
+            ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix
+            ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix
+            ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix

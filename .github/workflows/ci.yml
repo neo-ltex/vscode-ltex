@@ -29,15 +29,16 @@ jobs:
 
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v4"
 
       - name: "Set up Node.js"
-        uses: "actions/setup-node@v1"
+        uses: "actions/setup-node@v3"
         with:
-          node-version: "16.11.0"
+          node-version: "16"
+          cache: pnpm
 
       - name: "Install Node.js Dependencies"
-        run: "npm install && npm install -g vsce@1.100.1"
+        run: "pnpm install"
 
       - name: "Set up Python"
         uses: "actions/setup-python@v2"
@@ -55,7 +56,7 @@ jobs:
         run: "vsce package"
 
       - name: "Run ESLint"
-        run: "npm run lint"
+        run: "pnpm lint"
 
       - name: "Run Mocha Tests (Linux)"
         if: "${{ startsWith(matrix.os, 'ubuntu-') }}"
@@ -64,7 +65,7 @@ jobs:
           # to suppress "async hook stack has become corrupted" errors
           # (https://github.com/microsoft/vscode/issues/85601)
           NODE_OPTIONS: "--no-force-async-hooks-checks"
-        run: "npm run test"
+        run: "pnpm test"
 
       - name: "Run Mocha Tests (Windows)"
         if: "${{ startsWith(matrix.os, 'windows-') }}"
@@ -74,7 +75,7 @@ jobs:
           # (https://github.com/microsoft/vscode/issues/85601)
           NODE_OPTIONS: "--no-force-async-hooks-checks"
         # otherwise, git clean fails to remove lib/ with "Invalid argument" errors
-        run: "npm run test -- --fast"
+        run: "pnpm test -- --fast"
 
   # buildForCocNvim:
   #   name: "CI - Build for coc.nvim Job"
@@ -82,7 +83,7 @@ jobs:
 
   #   steps:
   #     - name: "Checkout Repository"
-  #       uses: "actions/checkout@v2"
+  #       uses: "actions/checkout@v4"
 
   #     - name: "Set up Node.js"
   #       uses: "actions/setup-node@v1"
@@ -101,13 +102,13 @@ jobs:
   #       run: "python -u tools/patchForTarget.py --target coc.nvim"
 
   #     - name: "Install Node.js Dependencies"
-  #       run: "npm install"
+  #       run: "pnpm install"
 
   #     - name: "Compile and Package"
-  #       run: "npm run coc.nvim:prepublish"
+  #       run: "pnpm coc.nvim:prepublish"
 
   #     - name: "Run ESLint"
-  #       run: "npm run lint"
+  #       run: "pnpm lint"
 
   validate:
     name: "CI - Validate Job"
@@ -115,7 +116,7 @@ jobs:
 
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v4"
 
       - name: "Set up Python"
         uses: "actions/setup-python@v2"
@@ -143,7 +144,7 @@ jobs:
 
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v4"
 
       - name: "Set up Node.js"
         uses: "actions/setup-node@v1"
@@ -151,7 +152,7 @@ jobs:
           node-version: "16.11.0"
 
       - name: "Install Node.js Dependencies"
-        run: "npm install && npm install -g vsce@1.100.1 ovsx@0.2.1"
+        run: "pnpm install"
 
       - name: "Set up Python"
         uses: "actions/setup-python@v2"
@@ -196,7 +197,7 @@ jobs:
             ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix
             ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix
 
-      - run: "npm run convert-changelog"
+      - run: "pnpm convert-changelog"
 
       - name: "Publish Package on VS Marketplace"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
@@ -224,7 +225,7 @@ jobs:
 
   #   steps:
   #     - name: "Checkout Repository"
-  #       uses: "actions/checkout@v2"
+  #       uses: "actions/checkout@v4"
 
   #     - name: "Set up Node.js"
   #       uses: "actions/setup-node@v1"
@@ -244,7 +245,7 @@ jobs:
   #       run: "python -u tools/patchForTarget.py --target coc.nvim"
 
   #     - name: "Install Node.js Dependencies"
-  #       run: "npm install"
+  #       run: "pnpm install"
 
   #     - name: "Set VSCODE_LTEX_VERSION"
   #       run: "echo \"VSCODE_LTEX_VERSION=$(python -u -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\" >> $GITHUB_ENV"
@@ -259,14 +260,14 @@ jobs:
   #       run: "if [[ -z \"$VSCODE_LTEX_IS_PRERELEASE\" ]]; then echo 'Error: VSCODE_LTEX_IS_PRERELEASE not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE set to '$VSCODE_LTEX_IS_PRERELEASE'\""
 
   #     - name: "Compile and Package"
-  #       run: "npm run coc.nvim:prepublish"
+  #       run: "pnpm coc.nvim:prepublish"
 
   #     - name: "Publish on npm (Dry Run)"
   #       if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'true' }}"
-  #       run: "npm publish --dry-run"
+  #       run: "pnpm publish --dry-run"
 
   #     - name: "Publish on npm"
   #       if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
   #       env:
   #         NODE_AUTH_TOKEN: "${{ secrets.VSCODE_LTEX_NPM_TOKEN }}"
-  #       run: "npm publish"
+  #       run: "pnpm publish"
