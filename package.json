@@ -34,11 +34,11 @@
   "main": "./dist/extension.js",
   "scripts": {
     "clean": "git clean -f -x lib/ && rimraf dist tmp-* .vscode-test *.vsix",
-    "coc.nvim:prepublish": "npm run vscode:prepublish",
+    "coc.nvim:prepublish": "pnpm run vscode:prepublish",
     "compile": "tsc",
     "convert-changelog": "python -u tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
     "lint": "eslint src test --max-warnings 0 --ext ts",
-    "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python -u tools/createOfflinePackages.py --current-system",
+    "pretest": "git clean -f -x lib/ && pnpm run vscode:prepublish && python -u tools/createOfflinePackages.py --current-system",
     "test": "mocha ./out/test/TestRunner.js",
     "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production",
     "watch": "tsc -watch",
@@ -2643,7 +2643,9 @@
     "eslint": "8.6.0",
     "eslint-config-google": "0.14.0",
     "eslint-plugin-only-warn": "1.0.3",
+    "glob": "^10.3.10",
     "mocha": "9.1.3",
+    "ovsx": "^0.8.3",
     "rimraf": "^3.0.2",
     "ts-loader": "9.2.6",
     "typescript": "4.5.4",
@@ -2651,6 +2653,7 @@
     "webpack": "5.65.0",
     "webpack-cli": "4.9.1"
   },
+  "packageManager": "pnpm@8.14.1",
   "engines": {
     "vscode": "^1.52.0"
   },

@@ -5,39 +5,35 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import glob from 'glob';
-import Mocha from 'mocha';
-import * as Path from 'path';
+import { glob } from 'glob'
+import Mocha from 'mocha'
+import * as Path from 'path'
 
 export function run(): Promise<void> {
   const mocha: Mocha = new Mocha({
-        ui: 'bdd',
-        timeout: 300000,
-        color: true,
-      });
+    ui: 'bdd',
+    timeout: 300000,
+    color: true,
+  })
 
-  const testsRoot: string = Path.resolve(__dirname, '..');
+  const testsRoot: string = Path.resolve(__dirname, '..')
 
-  return new Promise((resolve: () => void, reject: (reason?: any) => void) => {
-    glob('**/**.test.js', {cwd: testsRoot}, (e: Error | null, files: string[]) => {
-      if (e != null) {
-        return reject(e);
-      }
+  return glob('**/**.test.js', { cwd: testsRoot }).then(files => {
+    files.forEach((x: string) => mocha.addFile(Path.resolve(testsRoot, x)))
 
-      files.forEach((x: string) => mocha.addFile(Path.resolve(testsRoot, x)));
-
-      try {
+    try {
+      return new Promise((a, r) => {
         mocha.run((failures: number): void => {
           if (failures > 0) {
-            reject(new Error(`${failures} tests failed.`));
+            r(new Error(`${failures} tests failed.`))
           } else {
-            resolve();
+            a()
           }
-        });
-      } catch (e: unknown) {
-        console.error(e);
-        reject(e);
-      }
-    });
-  });
+        })
+      })
+    } catch (e: unknown) {
+      console.error(e)
+      throw e
+    }
+  })
 }
