@@ -34,11 +34,11 @@
   "main": "./dist/extension.js",
   "scripts": {
     "clean": "git clean -f -x lib/ && rimraf dist tmp-* .vscode-test *.vsix",
-    "coc.nvim:prepublish": "npm run vscode:prepublish",
+    "coc.nvim:prepublish": "pnpm run vscode:prepublish",
     "compile": "tsc",
     "convert-changelog": "python -u tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
     "lint": "eslint src test --max-warnings 0 --ext ts",
-    "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python -u tools/createOfflinePackages.py --current-system",
+    "pretest": "git clean -f -x lib/ && pnpm run vscode:prepublish && python -u tools/createOfflinePackages.py --current-system",
     "test": "mocha ./out/test/TestRunner.js",
     "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production",
     "watch": "tsc -watch",
