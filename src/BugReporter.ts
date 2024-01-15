@@ -30,7 +30,7 @@ export default class BugReporter {
   private static readonly _maxNumberOfConfigLines: number = 1000;
   private static readonly _maxNumberOfServerLogLines: number = 100;
   private static readonly _maxNumberOfClientLogLines: number = 1000;
-  private static readonly _bugReportUrl: string = 'https://github.com/valentjn/vscode-ltex/'
+  private static readonly _bugReportUrl: string = 'https://github.com/neo-ltex/vscode-ltex/'
       + 'issues/new?assignees=&labels=1-bug%20%F0%9F%90%9B%2C+2-unconfirmed&'
       + 'template=bug-report.md&title=&body=';
 
@@ -126,7 +126,7 @@ export default class BugReporter {
     // deprecated: replace with self._context.extension starting with VS Code 1.55.0
     const extension: Code.Extension<any> | undefined =
     // #if TARGET == 'vscode'
-        Code.extensions.getExtension('valentjn.vscode-ltex');
+        Code.extensions.getExtension('neo-ltex.ltex');
     // #elseif TARGET == 'coc.nvim'
         // Code.extensions.all.find(
             // (extension: Code.Extension<Code.ExtensionApi>) => extension.id == 'coc-ltex');
