@@ -57,7 +57,7 @@ jobs:
         run: "echo \"DISPLAY=:99.0\" >> $GITHUB_ENV && Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &"
 
       - name: "Build Package with vsce"
-        run: "vsce package"
+        run: "pnpm vsce package"
 
       - name: "Run ESLint"
         run: "pnpm lint"
@@ -182,7 +182,7 @@ jobs:
         run: "if [ \"$VSCODE_LTEX_IS_PRERELEASE\" = \"false\" ]; then echo \"VSCODE_LTEX_CHANGELOG<<EOF\" >> $GITHUB_ENV; python -u tools/convertChangelog.py --xml-file changelog.xml --version latest >> $GITHUB_ENV; echo \"EOF\" >> $GITHUB_ENV; else echo \"VSCODE_LTEX_CHANGELOG=This is a pre-release. Use at your own risk.\" >> $GITHUB_ENV; fi"
 
       - name: "Build Package with vsce"
-        run: "vsce package"
+        run: "pnpm vsce package"
 
       - name: "Build Offline Packages"
         env:
@@ -205,7 +205,7 @@ jobs:
 
       - name: "Publish Package on VS Marketplace"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
-        run: vsce publish
+        run: pnpm vsce publish
         env:
           VSCE_PAT: "${{ secrets.VSCODE_LTEX_VSCE_TOKEN }}"
 
@@ -213,7 +213,7 @@ jobs:
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
         # env:
         #   VSCODE_LTEX_OVSX_TOKEN: "${{ secrets.VSCODE_LTEX_OVSX_TOKEN }}"
-        run: "ovsx publish -p ${{ secrets.VSCODE_LTEX_OVSX_TOKEN }}"
+        run: "pnpm ovsx publish -p ${{ secrets.VSCODE_LTEX_OVSX_TOKEN }}"
 
   # not ready for coc:nvim deployment
   # the package name needs to be changed to `@neo-ltex/coc-ltex`

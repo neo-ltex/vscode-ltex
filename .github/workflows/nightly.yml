@@ -55,7 +55,7 @@ jobs:
         run: "python -u tools/updateLtexLsVersionAndHashDigests.py --tag nightly"
 
       - name: "Build Package with vsce"
-        run: "vsce package"
+        run: "pnpm vsce package"
 
       - name: "Build Offline Packages"
         env:
