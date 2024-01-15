@@ -2638,7 +2638,7 @@
     "@types/tar": "6.1.1",
     "@types/vscode": "1.52.0",
     "@typescript-eslint/eslint-plugin": "5.8.1",
-    "@typescript-eslint/parser": "5.8.0",
+    "@typescript-eslint/parser": "5.62.0",
     "@vscode/vsce": "^2.22.0",
     "eslint": "8.6.0",
     "eslint-config-google": "0.14.0",
