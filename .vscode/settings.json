@@ -1,12 +1,15 @@
 {
-	"terminal.integrated.env.linux": {
-		"DONT_PROMPT_WSL_INSTALL": "1"
-	},
 	"cSpell.words": [
 		"ltex",
 		"vsix"
 	],
 	"githubPullRequests.remotes": [
 		"origin"
-	]
+	],
+	"javascript.format.semicolons": "insert",
+	"terminal.integrated.env.linux": {
+		"DONT_PROMPT_WSL_INSTALL": "1"
+	},
+	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+	"typescript.format.semicolons": "insert"
 }
