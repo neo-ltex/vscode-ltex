@@ -1,5 +1,9 @@
 {
 	"terminal.integrated.env.linux": {
 		"DONT_PROMPT_WSL_INSTALL": "1"
-	}
+	},
+	"cSpell.words": [
+		"ltex",
+		"vsix"
+	]
 }
