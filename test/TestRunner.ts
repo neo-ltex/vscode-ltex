@@ -7,8 +7,9 @@
 
 // #if TARGET == 'vscode'
 import * as ChildProcess from 'child_process';
-import * as CodeTest from 'vscode-test';
-import * as CodeTestRunTest from 'vscode-test/out/runTest';
+import {
+  downloadAndUnzipVSCode, resolveCliPathFromVSCodeExecutablePath, runTests,
+} from '@vscode/test-electron';
 import * as Fs from 'fs';
 import * as Path from 'path';
 import * as Rimraf from 'rimraf';
@@ -40,12 +41,12 @@ async function runTestIteration(testIteration: number): Promise<void> {
   const gitCleanArgs: string[] = ['-C', ltexDirPath, 'clean', '-f', '-x', ltexLibDirPath];
   console.log(`Cleaning '${ltexLibDirPath}'...`);
   const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
-      'git', gitCleanArgs, {encoding: 'utf-8', timeout: 10000});
+    'git', gitCleanArgs, {encoding: 'utf-8', timeout: 10000});
 
   if (childProcess.status != 0) {
     throw new Error(`Could not clean '${ltexLibDirPath}'. `
-        + `Exit code: ${childProcess.status}. stdout: '${childProcess.stdout}'. `
-        + `stderr: '${childProcess.stderr}'.`);
+      + `Exit code: ${childProcess.status}. stdout: '${childProcess.stdout}'. `
+      + `stderr: '${childProcess.stderr}'.`);
   }
 
   try {
@@ -55,22 +56,22 @@ async function runTestIteration(testIteration: number): Promise<void> {
     Fs.mkdirSync(workspaceDirPath);
 
     const cliArgs: string[] = [
-          '--user-data-dir', userDataDirPath,
-          '--extensions-dir', extensionsDirPath,
-          '--install-extension', 'james-yu.latex-workshop',
-        ];
+      '--user-data-dir', userDataDirPath,
+      '--extensions-dir', extensionsDirPath,
+      '--install-extension', 'james-yu.latex-workshop',
+    ];
 
     if (useOfflinePackage) {
       let platform: string = 'linux';
       if (process.platform == 'darwin') platform = 'mac';
       else if (process.platform == 'win32') platform = 'windows';
       cliArgs.push('--install-extension', Path.join(ltexDirPath,
-          `ltex-${ltexVersion}-offline-${platform}-x64.vsix`));
+        `ltex-${ltexVersion}-offline-${platform}-x64.vsix`));
     }
 
     console.log('Calling Code CLI for extension installation...');
     const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
-        cliPath, cliArgs, {encoding: 'utf-8', stdio: 'inherit'});
+      cliPath, cliArgs, {encoding: 'utf-8', stdio: 'inherit'});
 
     if (childProcess.status != 0) throw new Error('Could not install extensions.');
 
@@ -90,24 +91,22 @@ async function runTestIteration(testIteration: number): Promise<void> {
       console.log(`Removing '${ltexLibDirPath}'...`);
       Rimraf.sync(ltexLibDirPath);
       const ltexOfflineLibDirPath: string =
-          Path.join(extensionsDirPath, `neo-ltex.ltex-${ltexVersion}`, 'lib');
+        Path.join(extensionsDirPath, `neo-ltex.ltex-${ltexVersion}`, 'lib');
       console.log(`Moving '${ltexOfflineLibDirPath}' to '${ltexLibDirPath}'...`);
       Fs.renameSync(ltexOfflineLibDirPath, ltexLibDirPath);
     }
 
-    const testOptions: CodeTestRunTest.TestOptions = {
-          vscodeExecutablePath: vscodeExecutablePath,
-          launchArgs: [
-            '--user-data-dir', userDataDirPath,
-            '--extensions-dir', extensionsDirPath,
-            workspaceDirPath,
-          ],
-          extensionDevelopmentPath: ltexDirPath,
-          extensionTestsPath: Path.join(__dirname, './index'),
-        };
-
     console.log('Running tests...');
-    const exitCode: number = await CodeTest.runTests(testOptions);
+    const exitCode: number = await runTests({
+      vscodeExecutablePath: vscodeExecutablePath,
+      launchArgs: [
+        '--user-data-dir', userDataDirPath,
+        '--extensions-dir', extensionsDirPath,
+        workspaceDirPath,
+      ],
+      extensionDevelopmentPath: ltexDirPath,
+      extensionTestsPath: Path.join(__dirname, './index'),
+    });
 
     if (exitCode != 0) throw new Error(`Test returned exit code ${exitCode}.`);
   } finally {
@@ -143,10 +142,10 @@ async function main(): Promise<void> {
   let codePlatform: string | undefined;
 
   console.log('Downloading and installing VS Code...');
-  vscodeExecutablePath = await CodeTest.downloadAndUnzipVSCode(codeVersion, codePlatform);
+  vscodeExecutablePath = await downloadAndUnzipVSCode(codeVersion, codePlatform);
 
   console.log('Resolving CLI path to VS Code...');
-  cliPath = CodeTest.resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
+  cliPath = resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
 
   for (let testIteration: number = 0; testIteration < 2; testIteration++) {
     if (fastMode && (testIteration != 1)) continue;
