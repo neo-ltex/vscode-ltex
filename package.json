@@ -2625,7 +2625,7 @@
   ],
   "dependencies": {
     "extract-zip": "2.0.1",
-    "semver": "7.3.5",
+    "semver": "7.5.4",
     "tar": "6.1.11",
     "vscode-languageclient": "7.0.0",
     "vscode-languageserver-protocol": "3.16.0"
@@ -2634,7 +2634,7 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@types/rimraf": "3.0.2",
-    "@types/semver": "7.3.9",
+    "@types/semver": "7.5.6",
     "@types/tar": "6.1.1",
     "@types/vscode": "1.52.0",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
