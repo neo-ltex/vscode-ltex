@@ -35,10 +35,11 @@
   "scripts": {
     "coc.nvim:prepublish": "npm run vscode:prepublish",
     "compile": "tsc",
+    "convert-changelog": "python -u tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
     "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
     "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python -u tools/createOfflinePackages.py --current-system",
     "test": "mocha ./out/test/TestRunner.js",
-    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python -u tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
+    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production",
     "watch": "tsc -watch",
     "webpack": "webpack --config .webpack.config.js --mode development",
     "webpack-dev": "webpack --config .webpack.config.js --mode development --watch"
