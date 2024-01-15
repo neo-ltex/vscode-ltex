@@ -1,7 +1,7 @@
 {
   "name": "ltex",
   "displayName": "LTeX – LanguageTool grammar/spell checking (neo)",
-  "version": "13.1.0",
+  "version": "13.1.1",
   "description": "Grammar/spell checker using LanguageTool with support for LaTeX, Markdown, and others",
   "categories": [
     "Linters",

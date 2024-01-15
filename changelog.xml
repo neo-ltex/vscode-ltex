@@ -12,6 +12,11 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
+    <release version="13.1.1" description="Deactivate" date="2024-01-15">
+      <action type="fix">
+        Deactivate `ltex-ls` when VSCode is closed.
+      </action>
+    </release>
     <release version="13.1.0" description="The ConTeXt Paradigm" date="2021-11-28">
       <action type="add" issue="ltex-ls#120">
         Add support for ConTeXt
