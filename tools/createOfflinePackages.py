@@ -81,7 +81,7 @@ def createPackage(ltexPlatform: Optional[str] = None, ltexArch: Optional[str] = 
     packageName = f"vscode-ltex-{ltexVersion}-offline-{ltexPlatform}-{ltexArch}.vsix"
 
   assert re.match(r"^[\-\.0-9A-Z_a-z]+$", packageName) is not None
-  cmd = f"vsce package -o \"{packageName}\""
+  cmd = f"npx vsce package -o \"{packageName}\""
   print(f"Creating package by running '{cmd}'...")
   subprocess.run(cmd, shell=True)
 
