@@ -200,11 +200,9 @@ jobs:
 
       - name: "Publish Package on VS Marketplace"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
-        uses: lannonbr/vsce-action@3.0.0
-        with:
-          args: publish -p $VSCE_TOKEN
+        run: vsce publish
         env:
-          VSCE_TOKEN: "${{ secrets.VSCODE_LTEX_VSCE_TOKEN }}"
+          VSCE_PAT: "${{ secrets.VSCODE_LTEX_VSCE_TOKEN }}"
 
       - name: "Publish Package on Open VSX"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
