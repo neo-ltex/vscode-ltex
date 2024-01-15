@@ -76,9 +76,9 @@ def createPackage(ltexPlatform: Optional[str] = None, ltexArch: Optional[str] = 
   ltexVersion = getLtexVersion()
 
   if ltexPlatform is None:
-    packageName = f"vscode-ltex-{ltexVersion}.vsix"
+    packageName = f"ltex-{ltexVersion}.vsix"
   else:
-    packageName = f"vscode-ltex-{ltexVersion}-offline-{ltexPlatform}-{ltexArch}.vsix"
+    packageName = f"ltex-{ltexVersion}-offline-{ltexPlatform}-{ltexArch}.vsix"
 
   assert re.match(r"^[\-\.0-9A-Z_a-z]+$", packageName) is not None
   cmd = f"npx vsce package -o \"{packageName}\""

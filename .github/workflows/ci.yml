@@ -191,7 +191,7 @@ jobs:
           # token: "${{ secrets.VSCODE_LTEX_CREATE_GITHUB_RELEASE_TOKEN }}"
           prerelease: "${{ env.VSCODE_LTEX_IS_PRERELEASE }}"
           body: "${{ env.VSCODE_LTEX_CHANGELOG }}"
-          files: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
+          files: "ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix\nltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix\nltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix\nltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
 
       - name: "Publish Package on VS Marketplace"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
