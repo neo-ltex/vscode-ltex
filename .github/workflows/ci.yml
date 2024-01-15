@@ -76,38 +76,38 @@ jobs:
         # otherwise, git clean fails to remove lib/ with "Invalid argument" errors
         run: "npm run test -- --fast"
 
-  buildForCocNvim:
-    name: "CI - Build for coc.nvim Job"
-    runs-on: "ubuntu-20.04"
+  # buildForCocNvim:
+  #   name: "CI - Build for coc.nvim Job"
+  #   runs-on: "ubuntu-20.04"
 
-    steps:
-      - name: "Checkout Repository"
-        uses: "actions/checkout@v2"
+  #   steps:
+  #     - name: "Checkout Repository"
+  #       uses: "actions/checkout@v2"
 
-      - name: "Set up Node.js"
-        uses: "actions/setup-node@v1"
-        with:
-          node-version: "16.11.0"
+  #     - name: "Set up Node.js"
+  #       uses: "actions/setup-node@v1"
+  #       with:
+  #         node-version: "16.11.0"
 
-      - name: "Set up Python"
-        uses: "actions/setup-python@v2"
-        with:
-          python-version: "3.9.0"
+  #     - name: "Set up Python"
+  #       uses: "actions/setup-python@v2"
+  #       with:
+  #         python-version: "3.9.0"
 
-      - name: "Install Python Dependencies"
-        run: "python -u -m pip install --upgrade pip && pip install semver==2.13.0"
+  #     - name: "Install Python Dependencies"
+  #       run: "python -u -m pip install --upgrade pip && pip install semver==2.13.0"
 
-      - name: "Patch for coc.nvim Target"
-        run: "python -u tools/patchForTarget.py --target coc.nvim"
+  #     - name: "Patch for coc.nvim Target"
+  #       run: "python -u tools/patchForTarget.py --target coc.nvim"
 
-      - name: "Install Node.js Dependencies"
-        run: "npm install"
+  #     - name: "Install Node.js Dependencies"
+  #       run: "npm install"
 
-      - name: "Compile and Package"
-        run: "npm run coc.nvim:prepublish"
+  #     - name: "Compile and Package"
+  #       run: "npm run coc.nvim:prepublish"
 
-      - name: "Run ESLint"
-        run: "npm run lint"
+  #     - name: "Run ESLint"
+  #       run: "npm run lint"
 
   validate:
     name: "CI - Validate Job"
@@ -138,7 +138,6 @@ jobs:
     if: "${{ startsWith(github.ref, 'refs/tags/') }}"
     needs:
       - "buildForVsCode"
-      - "buildForCocNvim"
       - "validate"
     runs-on: "ubuntu-20.04"
 
