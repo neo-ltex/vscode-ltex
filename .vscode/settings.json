@@ -5,5 +5,8 @@
 	"cSpell.words": [
 		"ltex",
 		"vsix"
+	],
+	"githubPullRequests.remotes": [
+		"origin"
 	]
 }
