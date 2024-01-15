@@ -133,8 +133,8 @@ export default class BugReporter {
     // #endif
 
     if (extension != null) {
-      bugReport = bugReport.replace(/^- vscode-ltex: .*$/m,
-          `- vscode-ltex: ${extension.packageJSON.version}`);
+      bugReport = bugReport.replace(/^- neo-ltex.ltex: .*$/m,
+          `- neo-ltex.ltex: ${extension.packageJSON.version}`);
     }
 
     if (this._dependencyManager != null) {

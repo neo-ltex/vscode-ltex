@@ -65,7 +65,7 @@ async function runTestIteration(testIteration: number): Promise<void> {
       if (process.platform == 'darwin') platform = 'mac';
       else if (process.platform == 'win32') platform = 'windows';
       cliArgs.push('--install-extension', Path.join(ltexDirPath,
-          `vscode-ltex-${ltexVersion}-offline-${platform}-x64.vsix`));
+          `ltex-${ltexVersion}-offline-${platform}-x64.vsix`));
     }
 
     console.log('Calling Code CLI for extension installation...');
