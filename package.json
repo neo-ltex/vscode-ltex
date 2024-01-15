@@ -2642,7 +2642,7 @@
     "@vscode/vsce": "^2.22.0",
     "eslint": "8.6.0",
     "eslint-config-google": "0.14.0",
-    "eslint-plugin-only-warn": "1.0.3",
+    "eslint-plugin-only-warn": "1.1.0",
     "mocha": "9.1.3",
     "rimraf": "^3.0.2",
     "ts-loader": "^9.5.1",
