@@ -7,6 +7,7 @@ const Path = require('path');
 /**@type {import('webpack').Configuration}*/
 const config = {
   target: 'node',
+  mode: 'development',
   entry: './src/extension.ts',
   output: {
     path: Path.resolve(__dirname, 'dist'),
@@ -32,10 +33,7 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'ts-loader',
-            options: {
-              configFile: 'tsconfig.json',
-            },
+            loader: 'ts-loader'
           },
         ],
       },
