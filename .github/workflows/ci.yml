@@ -206,9 +206,9 @@ jobs:
 
       - name: "Publish Package on Open VSX"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
-        env:
-          VSCODE_LTEX_OVSX_TOKEN: "${{ secrets.VSCODE_LTEX_OVSX_TOKEN }}"
-        run: "ovsx publish -p \"$VSCODE_LTEX_OVSX_TOKEN\""
+        # env:
+        #   VSCODE_LTEX_OVSX_TOKEN: "${{ secrets.VSCODE_LTEX_OVSX_TOKEN }}"
+        run: "ovsx publish -p ${{ secrets.VSCODE_LTEX_OVSX_TOKEN }}"
 
   # not ready for coc:nvim deployment
   # the package name needs to be changed to `@neo-ltex/coc-ltex`
