@@ -38,10 +38,11 @@
     "compile": "webpack",
     "compile-tests": "tsc",
     "convert-changelog": "python -u tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
-    "lint": "eslint src test --max-warnings 0 --ext ts",
+    "lint": "eslint src --max-warnings 0 --ext ts",
     "package": "webpack --mode production --devtool hidden-source-map",
     "pretest": "git clean -f -x lib/ && npm run compile-tests && npm run compile && npm run lint && python -u tools/createOfflinePackages.py --current-system",
     "test": "mocha ./out/test/TestRunner.js",
+    "test2": "node ./out/test/runTest.js",
     "vscode:prepublish": "npm run package",
     "watch": "webpack --watch",
     "watch-tests": "tsc -w"

@@ -8,8 +8,8 @@
 // #if TARGET == 'vscode'
 import * as Assert from 'assert';
 
-import Logger from '../src/Logger';
-import LoggingOutputChannel from '../src/LoggingOutputChannel';
+import Logger from '../Logger';
+import LoggingOutputChannel from '../LoggingOutputChannel';
 
 describe('Test Logger', () => {
   before(() => {
