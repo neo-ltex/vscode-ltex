@@ -8,7 +8,7 @@
 // #if TARGET == 'vscode'
 import * as Assert from 'assert';
 
-import ProgressStack from '../src/ProgressStack';
+import ProgressStack from '../ProgressStack';
 
 describe('Test ProgressStack', () => {
   it('Test finishTask()', () => {

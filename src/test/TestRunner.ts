@@ -14,7 +14,7 @@ import * as Fs from 'fs';
 import * as Path from 'path';
 import * as Rimraf from 'rimraf';
 
-import {version as ltexVersion} from '../package.json';
+import {version as ltexVersion} from '../../package.json';
 
 let ltexDirPath: string;
 let vscodeExecutablePath: string;
