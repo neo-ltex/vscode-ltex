@@ -2636,7 +2636,7 @@
     "@types/node": "18.x",
     "@types/rimraf": "3.0.2",
     "@types/semver": "7.3.9",
-    "@types/tar": "6.1.1",
+    "@types/tar": "6.1.10",
     "@types/vscode": "1.52.0",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
