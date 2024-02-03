@@ -251,5 +251,16 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
     - [How to Edit the Documentation](https://valentjn.github.io/ltex/ltex-ls/contributing.html#how-to-edit-the-documentation)
     - [How to Translate the User Interface](https://valentjn.github.io/ltex/ltex-ls/contributing.html#how-to-translate-the-user-interface)
 
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 [marketplace]: https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex
 [website]: https://valentjn.github.io/ltex
