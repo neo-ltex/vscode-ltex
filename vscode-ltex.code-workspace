@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../ltex-ls"
+		},
+		{
+			"path": "../lsp-cli"
+		},
+		{
+			"path": "../.github"
+		},
+	],
+	"settings": {
+		"githubPullRequests.remotes": [
+			"origin"
+		],
+		"terminal.integrated.env.linux": {
+			"DONT_PROMPT_WSL_INSTALL": "1"
+		},
+		"typescript.enablePromptUseWorkspaceTsdk": true
+	}
+}
