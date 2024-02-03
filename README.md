@@ -1,4 +1,7 @@
 <!--
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
    - Copyright (C) 2019-2021 Julian Valentin, LTeX Development Community
    -
    - This Source Code Form is subject to the terms of the Mozilla Public
@@ -253,3 +256,25 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 
 [marketplace]: https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex
 [website]: https://valentjn.github.io/ltex
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://valentjn.github.io"><img src="https://avatars.githubusercontent.com/u/19839841?v=4?s=100" width="100px;" alt="Julian Valentin"/><br /><sub><b>Julian Valentin</b></sub></a><br /><a href="https://github.com/neo-ltex/vscode-ltex/commits?author=valentjn" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
