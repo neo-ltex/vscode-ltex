@@ -1,6 +1,13 @@
 {
 	"cSpell.words": [
+		"biomejs",
+		"clibuilder",
+		"clipboardy",
+		"lstlisting",
 		"ltex",
+		"nvim",
+		"repobuddy",
+		"rsweave",
 		"vsix"
 	],
 	"githubPullRequests.remotes": [
