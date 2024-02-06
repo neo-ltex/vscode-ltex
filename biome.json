@@ -1,0 +1,28 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.5.2/schema.json",
+  "extends": [
+    "./node_modules/@repobuddy/biome/recommended.json"
+  ],
+  "files": {
+    "ignore": [
+      "dist",
+      "out",
+      ".vscode-test"
+    ],
+    "include": [
+      "src",
+      "**/*.json"
+    ]
+  },
+  "formatter": {
+    "lineEnding": "lf"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "suspicious": {
+        "noExplicitAny": "off"
+      }
+    }
+  }
+}
