@@ -52,6 +52,7 @@ export default class CommandHandler {
       + 'template=feature-request.md&title=';
 
   private static readonly _defaultCodeLanguageIds: string[] = [
+		'asciidoc',
     'bibtex',
     'context',
     'context.tex',
@@ -61,6 +62,7 @@ export default class CommandHandler {
     'org',
     'restructuredtext',
     'rsweave',
+		'typst'
   ];
 
   public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
@@ -302,6 +304,11 @@ export default class CommandHandler {
 
     for (const codeLanguageId of enabledCodeLanguageIds) {
       switch (codeLanguageId) {
+				case 'asciidoc': {
+          enabledFileExtensions.add('adoc');
+					enabledFileExtensions.add('asciidoc');
+          break;
+        }
         case 'bibtex': {
           enabledFileExtensions.add('bib');
           break;
@@ -483,6 +490,10 @@ export default class CommandHandler {
         }
         case 'typescript': {
           enabledFileExtensions.add('ts');
+          break;
+        }
+				case 'typst': {
+          enabledFileExtensions.add('typ');
           break;
         }
         case 'vb': {
