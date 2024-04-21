@@ -2646,7 +2646,7 @@
     "@typescript-eslint/parser": "^6.19.1",
     "@vscode/test-cli": "^0.0.4",
     "@vscode/test-electron": "^2.3.8",
-    "@vscode/vsce": "^2.22.0",
+    "@vscode/vsce": "^2.26.0",
     "clibuilder": "^8.0.17",
     "eslint": "^8.56.0",
     "eslint-config-google": "^0.14.0",
