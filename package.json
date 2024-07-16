@@ -119,6 +119,7 @@
           ],
           "scope": "window",
           "default": [
+            "asciidoc",
             "bibtex",
             "context",
             "context.tex",
@@ -127,7 +128,8 @@
             "markdown",
             "org",
             "restructuredtext",
-            "rsweave"
+            "rsweave",
+            "typst"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.enabled.markdownDescription%",
           "examples": [
@@ -2615,6 +2617,7 @@
     "onCommand:ltex.requestFeature",
     "onCommand:_ltex.openMarkdownExample",
     "onCommand:_ltex.openLatexExample",
+    "onLanguage:asciidoc",
     "onLanguage:bibtex",
     "onLanguage:context",
     "onLanguage:context.tex",
@@ -2624,6 +2627,7 @@
     "onLanguage:org",
     "onLanguage:restructuredtext",
     "onLanguage:rsweave",
+    "onLanguage:typst",
     "onNotebook:*"
   ],
   "dependencies": {
